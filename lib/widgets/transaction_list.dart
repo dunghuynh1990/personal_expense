@@ -34,7 +34,7 @@ class TransactionList extends StatelessWidget {
         : ListView(
             children: transactions
                 .map((tx) => TransactionItem(
-                      key: ValueKey(tx.id), //set key for every item so in case delete the correct item and it's element
+                      key: ValueKey(tx.id), //set key for every item so in delete case
                       transaction: tx,
                       deleteTx: deleteTx,
                     ))
