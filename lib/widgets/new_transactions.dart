@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -8,16 +6,43 @@ import 'package:personal_expense/widgets/adaptive_flat_button.dart';
 class NewTransactions extends StatefulWidget {
   final Function addTX;
 
-  NewTransactions(this.addTX);
+  NewTransactions(this.addTX) {
+    print('Constructor NewTransaction Widget');
+  }
 
   @override
-  _NewTransactionsState createState() => _NewTransactionsState();
+  _NewTransactionsState createState() {
+    print('createState()');
+    return _NewTransactionsState();
+  }
 }
 
 class _NewTransactionsState extends State<NewTransactions> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime _selectedDate;
+
+  _NewTransactionsState() {
+    print('NewTransactionState()');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('initState()');
+  }
+
+  @override
+  void didUpdateWidget(NewTransactions oldWidget) {
+    print('didUpdateWidget()');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    print('dispose()');
+    super.dispose();
+  }
 
   void _submitData() {
     if (_amountController.text.isEmpty) {
@@ -66,7 +91,10 @@ class _NewTransactionsState extends State<NewTransactions> {
             top: 10,
             left: 10,
             right: 10,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+            bottom: MediaQuery
+                .of(context)
+                .viewInsets
+                .bottom + 10,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -97,15 +125,21 @@ class _NewTransactionsState extends State<NewTransactions> {
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                       ),
                     ),
-                AdaptiveFlattButton('Choose Date', _presentDatePicker),
+                    AdaptiveFlattButton('Choose Date', _presentDatePicker),
                   ],
                 ),
               ),
               RaisedButton(
                 child: Text('Add Transaction'),
                 onPressed: _submitData,
-                color: Theme.of(context).primaryColor,
-                textColor: Theme.of(context).textTheme.button.color,
+                color: Theme
+                    .of(context)
+                    .primaryColor,
+                textColor: Theme
+                    .of(context)
+                    .textTheme
+                    .button
+                    .color,
               ),
             ],
           ),
